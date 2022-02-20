@@ -1,0 +1,19 @@
+body {
+    margin: 1rem;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.card-header {
+    background-color: #f0f1f2;
+}
+
+.card-body {
+    background-color: #f8f9fa;
+}
+
+.card-text {
+    margin-right: 1rem;
+}

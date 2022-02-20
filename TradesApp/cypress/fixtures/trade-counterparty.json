@@ -1,0 +1,22 @@
+{
+  "trade" : {
+    "counterpartyId" : 5, 
+    "product" : "test",
+    "quantity" : 12,
+    "price" : 2,
+    "date" : "12/11/2021",
+    "direction" : true
+  },
+  "tradeToEdit" : {
+    "id" : 46,
+    "counterpartyId" : 5, 
+    "product" : "test",
+    "quantity" : 12,
+    "price" : 2,
+    "date" : "12/11/2021",
+    "direction" : true
+  },
+  "counterparty" : {
+    "name" : "test"
+  }
+}

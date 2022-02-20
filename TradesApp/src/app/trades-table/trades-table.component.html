@@ -1,0 +1,51 @@
+<body>
+    <h2>Trades</h2>
+    <div class="card">
+      <div class="card-header">
+        Search
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="card-text">CounterParty</span>
+          <select (change)="getTrade()" [(ngModel)]="selectedTrade" class="select" name="" id="selectTrade">
+            <option value="0">All</option>
+            <option 
+              id="{{'option' + counterparty.id}}" *ngFor="let counterparty of Counterparties" 
+              [value]="counterparty.id">
+                {{ counterparty.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <button type="button" id="addTradeButton" (click)="toTradeForm()" class="btn btn-primary">Add Trade</button>
+      <button type="button" id="addCounterpartyButton" (click)="toCounterpartyForm()" class="btn btn-info">Add Counterparty</button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">CounterParty</th>
+          <th scope="col">Direction</th>
+          <th scope="col">Product</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trade of Trades" >
+          <th scope="row">{{ trade.id }}</th>
+          <td id="counterpartyName">{{ trade.counterParty.name }}</td>
+          <td>{{ trade.direction == 0 ? 'False' : 'True'  }}</td>
+          <td>{{ trade.product }}</td>
+          <td>{{ trade.quantity }}</td>
+          <td>{{ trade.price }}</td>
+          <td>{{ trade.date | date }}</td>
+          <td>
+            <button type="button" id="editButton" (click)="editItem(trade.id)" class="btn btn-link">Edit</button>
+            <button type="button" id="removeButton'" (click)="deleteTrade(trade.id)" class="btn btn-link">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>

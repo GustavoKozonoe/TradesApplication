@@ -1,0 +1,73 @@
+<body>
+  <h2>Trade Form</h2>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="submitItem()">
+    <div class="row mb-3">
+      <label for="counterparty" class="col-sm-2 col-form-label">Counterparty</label>
+      <div class="col-sm-10">
+        <select formControlName="counterPartyId" class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
+          <option value="0" selected>Open this select menu</option>
+          <option *ngFor="let counterparty of Counterparties" [value]="counterparty.id">{{ counterparty.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="product" class="col-sm-2 col-form-label">Product</label>
+      <div class="col-sm-10">
+        <input id="validationTooltip01" formControlName="product" id="product"
+        [class.is-invalid]="product.errors" type="text" class="form-control">    
+        <div *ngIf="product.errors" class="invalid-feedback">
+          The product name must be between 2 and 24 characters
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-3">
+      <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
+      <div class="col-sm-10">
+        <input id="validationTooltip01" value=1 formControlName="quantity" type="number" 
+          [class.is-invalid]="quantity.errors?.['required'] || quantity.errors?.['pattern']" 
+          class="form-control" id="Quantity">
+        <div *ngIf="!quantity.errors?.['pattern']" class="invalid-feedback">
+          Please must be a number
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="price" class="col-sm-2 col-form-label">Price</label>
+      <div class="col-sm-10">
+        <input id="validationTooltip01" formControlName="price" id="price"
+        [class.is-invalid]="price.errors?.['required'] || price.errors?.['pattern']" type="number" class="form-control">
+        <div *ngIf="!price.errors?.['pattern']" class="invalid-feedback">
+          Please must be a number
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="date" class="col-sm-2 col-form-label">Date</label>
+      <div class="col-sm-10">
+        <input formControlName="date" id="validationTooltip01" placeholder="MM/DD/YYYY" class="form-control" 
+        [class.is-invalid]="date.errors" id="Date">
+        <div *ngIf="date.errors?.['pattern']">invalid Date!</div>
+      </div>
+    </div>
+
+    <fieldset class="row mb-3 ">
+      <legend class="col-form-label col-sm-2 pt-0">Direction</legend>
+      <div class="col-sm-10">
+        <div class="form-check form-switch">
+          <input id="validationTooltip01" formControlName="direction" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Sell or Buy</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="modal-footer">
+      <button id="submitButton" type="submit" class="btn btn-success">Submit</button>
+      <button id="backButton" (click)="backToMenu()" type="button" class="btn btn-danger">Back</button>
+    </div>
+  </form>
+</body>
